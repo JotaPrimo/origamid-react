@@ -1,14 +1,12 @@
 import React from 'react';
 
-const Input = ({ label, inputId, type, placeholder = '' }) => {
+const Input = ({ label, id, placeholder = '',  ...props }) => {
   return (
-    <>
-      <label htmlFor={inputId}>
-        {label} :
-        <input id={inputId} type={type} placeholder={placeholder} />
-      </label>
-    </>
+    <div style={{ margin: '1rem 0'}}>
+     <label htmlFor={id}>{label}</label>
+     <input id={id} type="text" placeholder={placeholder} {...props} />
+    </div>
   );
 };
 
-export default Input;
+export default Input
