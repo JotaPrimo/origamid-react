@@ -1,11 +1,11 @@
 
 import './App.css';
-import Contar from './components/Contar';
+import DesafioUseState from './desafios/DesafioUseState';
 
 function App() {
   return (
     <>      
-    <Contar />
+    <DesafioUseState />
     </>
   );
 }
