@@ -1,11 +1,11 @@
 
 import './App.css';
-import DesafioUseState from './desafios/DesafioUseState';
+import DesafioEffectTwo from './desafios/DesafioEffectTwo/DesafioEffectTwo';
 
 function App() {
   return (
     <>      
-    <DesafioUseState />
+    <DesafioEffectTwo />
     </>
   );
 }

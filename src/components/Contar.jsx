@@ -1,29 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Contar() {
-  const [itens, setItens] = useState([]);
   const [contar, setContar] = useState(0);
 
-  function alterarListagem() {
-    setItens([...itens, 'Item 1', 'Item 2'])
-  }
+  useEffect(() => {
+   console.log("Executou apenas uma vez, por causa do effetc");   
+  }, []);
 
   function handleClick() {
-    setContar((contar) => {
-      return contar + 1;
-    });
+    console.log('handleClick')
+   setContar((contar) => contar + 1)
   }
   return (
     <div>
-      <button onClick={alterarListagem}>Alterar listagem</button>
-      <button onClick={handleClick}>Contar {contar}</button>
-      {itens && (
-        <ul>
-          {itens.map((iten, index) => (
-             <li key={index}>{iten}</li>
-          ))}         
-        </ul>
-      )}
+      <button onClick={handleClick}>{contar}</button>
     </div>
   );
 }
