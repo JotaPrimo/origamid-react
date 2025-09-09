@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ButtonDesafio from '../DesafioUseState/ButtonDesafio';
+import ButtonDesafio from '../DesafioUseState/ButtonDesafio/ButtonDesafio';
 import Preferencia from './Preferencia';
+import type { Produto } from '../../interfaces/Produto.interface';
 
 function DesafioEffectTwo() {
   const CHAVE_LOCAL_STORAGE = 'produto';
   const [preferencia, setPreferencia] = useState();
-  const [produto, setProduto] = useState(null);
+  const [produto, setProduto] = useState<Produto | null>(null);
 
   useEffect(() => {
     checarLocalStorage();
@@ -17,22 +18,22 @@ function DesafioEffectTwo() {
       .then((data) => setProduto(data));
   }
 
-  async function changePreferencia(preferenciaSelect) {
+  async function changePreferencia(preferenciaSelect: string) {
     await buscarDados(preferenciaSelect);
-    salvarEmLocalStorage(preferenciaSelect);
-    setPreferencia(preferenciaSelect);  
+    salvarEmLocalStorage();
+    // setPreferencia();
   }
 
   function checarLocalStorage() {
     const preferenciaLocal = localStorage.getItem(CHAVE_LOCAL_STORAGE);
 
     if (preferenciaLocal != null) {
-      setPreferencia(preferenciaLocal);
+      // setPreferencia(preferenciaLocal);
     }
   }
 
   function salvarEmLocalStorage() {
-    localStorage.setItem(CHAVE_LOCAL_STORAGE, preferencia);
+    // localStorage.setItem(CHAVE_LOCAL_STORAGE, preferencia);
   }
 
   return (
@@ -42,8 +43,8 @@ function DesafioEffectTwo() {
           <h3>{preferencia}</h3>
           {
             <img
-              src={produto.fotos[0].src}
-              alt={produto.fotos[0].desc}
+              src={produto?.fotos?.[0]?.src ?? ''}
+              alt={produto?.fotos?.[0]?.src ?? ''}
               width="300px"
               height="300px"
             />

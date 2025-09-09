@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { buscarTodos } from '../services/user-random';
 
+interface User {
+  email: string;
+  nome: string;
+  login: Login;
+}
+
+interface Login {
+  uuid: string;
+}
+
 function Users() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     carregarUsuarios();
@@ -33,4 +43,4 @@ function Users() {
   );
 }
 
-export default Users
+export default Users;

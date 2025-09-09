@@ -9,7 +9,6 @@ const NavMain = () => {
     setCount(count + 1)
   }
 
-
   return (
     <>
       <nav>

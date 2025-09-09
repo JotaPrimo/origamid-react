@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import ButtonDesafio from './ButtonDesafio';
+import ButtonDesafio from './ButtonDesafio/ButtonDesafio';
 import './DesafioUseState.css';
 import ImageProduto from './ImageProduto';
+import type { Produto } from '../../interfaces/Produto.interface';
+
 
 function DesafioUseState() {
-  const [produto, setProduto] = useState({});
-  const [loading, setLoading] = useState();
+  const [produto, setProduto] = useState<Produto | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     changeProduto('tablet');
   }, []);
 
-  async function changeProduto(produto) {
+  async function changeProduto(produto: string) {
     setLoading(true);
     const dataProduto = await fetch(
       `https://ranekapi.origamid.dev/json/api/produto/${produto}`,
@@ -25,14 +27,14 @@ function DesafioUseState() {
     <div>
       {loading && <span>Loaging data</span>}
 
-      {!loading && (
+      {!loading && produto && (
         <div>
           <ImageProduto
             nome={produto.nome}
             preco={produto.preco}
             altImage={produto.nome}
             descricao={produto.descricao}
-            urlImage={produto?.fotos ? produto.fotos[0].src : null}
+            urlImage={produto?.fotos?.[0]?.src ?? ''}
           />
           <div className="produto-actions">
             <ButtonDesafio

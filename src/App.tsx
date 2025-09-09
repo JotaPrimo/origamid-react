@@ -1,8 +1,9 @@
 
 import './App.css';
+import type { FC } from 'react';
 import DesafioEffectTwo from './desafios/DesafioEffectTwo/DesafioEffectTwo';
 
-function App() {
+const App: FC = () => {
   return (
     <>      
     <DesafioEffectTwo />
@@ -10,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
